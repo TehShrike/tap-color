@@ -1,18 +1,16 @@
 {
-  "name": "tap-color",
-  "version": "1.1.0",
+  "name": "@tehshrike/tap-color",
+  "version": "2.0.0",
   "description": "Colorize The Test Anything Protocol Output",
   "license": "MIT",
-  "main": "lib/tap-color",
+  "main": "src/tap-color.js",
   "bin": "cli.js",
   "scripts": {
-    "clean": "rm -rf lib",
-    "build": "babel src/. -d lib/. --ignore=spec.js",
-    "test:output": "cat example-output.txt | sed 's/^not //' | node cli.js",
-    "test": "npm run lint && npm run test:output",
-    "lint": "eslint src",
-    "prebuild": "npm run clean",
-    "prepublish": "npm run build"
+    "test:output1:pass": "(cat example-output.1.txt | sed 's/^not //' | node cli.js) && echo PASS",
+    "test:output1": "(cat example-output.1.txt | node cli.js) && echo PASS",
+    "test:output2": "(cat example-output.1.txt | node cli.js) && echo PASS",
+    "test:output3": "(cat example-output.1.txt | node cli.js) && echo PASS",
+    "test": "npm run test:output1; npm run test:output1:pass; npm run test:output2; npm run test:output3"
   },
   "author": {
     "name": "Sigurd Fosseng",
@@ -21,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/laat/tap-color.git"
+    "url": "https://github.com/TehShrike/tap-color.git"
   },
   "dependencies": {
     "byline": "^5.0.0",
@@ -29,16 +27,8 @@
     "duplexer2": "^0.1.4",
     "through2": "^3.0.1"
   },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "eslint": "^6.4.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2"
-  },
   "files": [
-    "lib",
+    "src",
     "cli.js"
   ]
 }

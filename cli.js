@@ -1,15 +1,15 @@
 #!/usr/bin/env node
-var reporter = require('./lib/tap-color.js').default()
+const reporter = require(`./src/tap-color.js`)()
 
 process.stdin
-  .pipe(reporter)
-  .pipe(process.stdout)
+	.pipe(reporter)
+	.pipe(process.stdout)
 
-process.on('exit', function (status) {
-  if (status === 1) {
-    process.exit(1)
-  }
-  if (reporter.failed) {
-    process.exit(1)
-  }
+process.on(`exit`, status => {
+	if (status === 1) {
+		process.exit(1)
+	}
+	if (reporter.failed) {
+		process.exit(1)
+	}
 })
